@@ -1,0 +1,176 @@
+/* Using CSS resets from https://www.joshwcomeau.com/css/custom-css-reset/
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+    margin: 0;
+}
+
+body {
+    /* 3. Add accessible line-height */
+    line-height: 1.5;
+    /* 4. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/*
+    9. Create a root stacking context
+    */
+#root,
+#__next {
+    isolation: isolate;
+}
+
+/* End of copy-paste CSS resets*/
+
+@font-face {
+    font-family: 'bouncyblack';
+    src: url('fonts/bouncy-black-personal_use_only-webfont.woff2') format('woff2'),
+         url('fonts/bouncy-black-personal_use_only-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+:root {
+    --primary-accent: rgb(90, 118, 197);
+    --font-color-on-primary-accent: rgb(255, 255, 255);
+    --focus-color: rgb(0, 0, 255);
+    --warning-color: red;
+    --player-one-color: red;
+    --player-two-color: blue;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100vh;
+
+    font-family: Roboto, "Times New Roman", sans-serif;;
+}
+
+.header {
+    padding: 16px;
+    font-family: bouncyblack, "Times New Roman", sans-serif;
+    font-size: 2rem;
+    color: var(--primary-accent);  
+    background-color: ora;      /* Usually controls the fill */
+}
+
+input {
+    margin: 8px;
+    border-radius: 12px;
+    outline: none;
+    padding: 0.5rem;
+    border: 1px solid #929292;
+    width: 128px;
+}
+
+input:focus {
+    border: 1px solid var(--focus-color);
+}
+
+input:invalid {
+    border: 1px solid var(--warning-color);
+}
+
+button {
+    padding: 8px 16px 8px 16px;
+    border-radius: 8px;
+    background-color: var(--primary-accent);
+    color: var(--font-color-on-primary-accent);
+    border: none;
+    cursor: pointer;
+}
+
+.message {
+    margin-top: 16px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.board {
+    margin-top: 64px;
+    display: grid;
+    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: 100px 100px 100px;
+    gap: 1px;
+    background-color: black;
+    border: 4px solid black;
+
+    width: 310px;
+    margin: 32px auto;
+}
+
+.cell {
+    background-color: rgb(221, 221, 221);
+    margin: 0;
+    display: grid;
+    place-content: center;
+    font-family: bouncyblack, "Times New Roman", sans-serif;
+    font-size: 90px;
+    
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.cell[data-marker="O"]{
+    color: var(--player-one-color);
+}
+
+.cell[data-marker="X"]{
+    color: var(--player-two-color);
+}
